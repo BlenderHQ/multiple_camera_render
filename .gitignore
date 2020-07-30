@@ -1,4 +1,4 @@
-.gitattributes
+*.gitattributes
 
 __pycache__/
 *.py[cod]

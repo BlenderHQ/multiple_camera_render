@@ -3,8 +3,8 @@ from . import ui
 
 if "bpy" in locals():
     import importlib
-    importlib.reload(ui)
     importlib.reload(operators)
+    importlib.reload(ui)
 
     register()
 
@@ -24,8 +24,8 @@ bl_info = {
 
 
 modules_ = [
-    ui,
-    operators
+    operators,
+    ui
 ]
 
 

@@ -1,4 +1,5 @@
 import os
+import shutil
 import math
 
 import bpy
@@ -21,8 +22,8 @@ class MCR_OT_multiple_camera_render(bpy.types.Operator):
     )
 
     # Fields to restore after render complete
-    render_filepath = ""
     camera_queue = []
+    render_filepath = ""
     frame_current = 0
     frame_end = 0
     use_lock_interface = True
@@ -39,20 +40,24 @@ class MCR_OT_multiple_camera_render(bpy.types.Operator):
 
     @classmethod
     def render_post_handler(cls, scene, c):
-        # prev_render_filepath = bpy.path.abspath(
-        #     scene.render.filepath[0:-2]
-        #     + f"_{cls.frame_current:01d}{scene.render.file_extension}")
-        # if os.path.isfile(prev_render_filepath):
-        #     os.rename(
-        #         prev_render_filepath,
-        #         scene.render.filepath[0:-2] + scene.render.file_extension
-        #     )
+        prev_filepath = bpy.path.abspath(
+            scene.render.filepath[0:-2]
+            + f"_{cls.frame_current:01d}{scene.render.file_extension}")
+        if os.path.isfile(prev_filepath):
+            new_filepath = f"{scene.render.filepath[0: -2]}{scene.render.file_extension}"
+            try:
+                if os.path.isfile(new_filepath):
+                    shutil.move(prev_filepath, new_filepath)
+                else:
+                    os.rename(prev_filepath, new_filepath)
+            except Exception as e:
+                print("Unable to rename output file")
 
         if len(cls.camera_queue):
             next_camera = cls.camera_queue.pop(0)
             scene.camera = next_camera
             scene.render.filepath = os.path.join(
-                cls.render_filepath, next_camera.name) + "_"
+                cls.render_filepath, next_camera.name) + "_#"
         else:
             scene.render.filepath = cls.render_filepath
             scene.frame_end = cls.frame_end
@@ -121,7 +126,7 @@ class MCR_OT_multiple_camera_render(bpy.types.Operator):
 
         scene.camera = cls.camera_queue.pop(0)
         scene.render.filepath = os.path.join(
-            cls.render_filepath, scene.camera.name) + "_"
+            cls.render_filepath, scene.camera.name) + "_#"
 
         bpy.app.handlers.render_pre.append(cls.render_pre_handler)
         bpy.app.handlers.render_post.append(cls.render_post_handler)

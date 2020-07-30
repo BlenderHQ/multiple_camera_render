@@ -7,17 +7,21 @@ if "bpy" in locals():
 import bpy
 
 
-class MCR_PT_multiple_camera_render(bpy.types.Panel):
-    bl_label = "Multiple Camera Render"
+class MCRBase:
     bl_space_type = 'VIEW_3D'
     bl_region_type = 'UI'
     bl_category = "Camera Render"
     bl_options = set()
 
+
+class MCR_PT_multiple_camera_render(MCRBase, bpy.types.Panel):
+    bl_label = "Multiple Camera Render"
+
     def draw(self, context):
         layout = self.layout
 
         col = layout.column(align=True)
+        col.use_property_split = True
 
         # 'ALL' mode for MCR_OT_multiple_camera_render operator
         camera_count = 0

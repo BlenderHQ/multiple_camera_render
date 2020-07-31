@@ -9,8 +9,10 @@ Addon itself is not limited to use only for photogrammetry and prototyping. Any 
 
 #### Usage
 
-Download, install, design your multi camera rig layout. 
- 
+Download, install, design your multi camera rig layout. Define saving path for images and used settings. Setup composing if needed.
+In addon UI press what type of render you want: Render all cams or only selected and their order.
+
+
 Download the latest version from github: https://github.com/BlenderHQ/multiple_camera_render/releases
  
 Addon from "Blender for 3D Scanning and Photogrammetry Project"  https://www.patreon.com/BlenderHQ_

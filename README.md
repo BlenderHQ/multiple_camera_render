@@ -1,4 +1,5 @@
 # Multiple Camera Render
+![MultiCameraRender](https://user-images.githubusercontent.com/16822993/89035314-63de3d00-d343-11ea-9831-59a3223a0217.JPG)
 
 Add-on for **Blender 2.8+** with which you can render sequentially all or only selected cameras in scene.
 Addon was made to help in prototyping **photogrammetry, photometry or volumetric capture Multi Camera Rigs**.

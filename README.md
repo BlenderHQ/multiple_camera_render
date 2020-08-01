@@ -7,6 +7,7 @@ You can quickly simulate not only camera layout choose suitable lenses, and simu
 Quickly render with **Eevee** or **Cycles** and test this renders as a synthetic dataset in your favourite **photogrammetry software**.
 
 Addon itself is not limited to use only for photogrammetry and prototyping. Any scenes that can required render stills from different cams is a good case for it.
+For example addon would be good for rendering proxy [impostors](https://docs.unrealengine.com/en-US/Engine/Content/Tools/RenderToTextureTools/3/index.html) for Unity / Unreal. 
 
 #### Usage
 

@@ -1,8 +1,10 @@
+from . import extend_bpy_types
 from . import operators
 from . import ui
 
 if "bpy" in locals():
     import importlib
+    importlib.reload(extend_bpy_types)
     importlib.reload(operators)
     importlib.reload(ui)
 
@@ -13,17 +15,18 @@ import bpy
 bl_info = {
     "name": "Multiple Camera Render",
     "author": "Vlad Kuzmin (ssh4), Ivan Perevala (vanyOk)",
-    "version": (0, 0, 1),
+    "version": (0, 0, 2),
     "blender": (2, 80, 0),
     "description": "Sequential rendering from multiple cameras",
     "location": "Tool settings > Camera Render",
     "support": 'COMMUNITY',
     "category": "Render",
-    "doc_url": "https://github.com/BlenderHQ/multiple-camera-render"
+    "doc_url": "https://github.com/BlenderHQ/multiple_camera_render"
 }
 
 
 modules_ = [
+    extend_bpy_types,
     operators,
     ui
 ]

@@ -1,4 +1,9 @@
 # Multiple Camera Render
+
+> [!IMPORTANT]
+> This repository is archived now.
+> Newer versions are available at [ivan-perevala/multiple_camera_render](https://github.com/ivan-perevala/multiple_camera_render)
+
 ![MultiCameraRender](https://user-images.githubusercontent.com/16822993/89035314-63de3d00-d343-11ea-9831-59a3223a0217.JPG)
 
 Add-on for **Blender 2.80+** with which you can render sequentially all or only selected cameras in scene.
